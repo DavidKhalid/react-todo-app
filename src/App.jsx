@@ -1,12 +1,14 @@
 // import { useState } from 'react'
 import { useState } from "react";
+import Todos from "./components/Todos";
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import "./App.css";
 
 function App() {
   // const [count, setCount] = useState(0)
-  const [todos] = useState([
+  // eslint-disable-next-line no-unused-vars
+  const [todos, setTodos] = useState([
     {
       id: 1,
       title: "Finis Progate React Course",
@@ -30,9 +32,9 @@ function App() {
     <>
       <div>
         <h1>React Project</h1>
-        {todos.map((todo) => {
-          return <p key={todo.id}>{todo.title}</p>;
-        })}
+        <Todos
+          todos= {todos}
+         />
       </div>
     </>
   );

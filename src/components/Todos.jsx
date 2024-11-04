@@ -11,7 +11,7 @@ const Todos = (props) => {
   
   console.log("Todos props:", props.todos);
   return (
-    <div>
+    <div style={style.container} >
       {props.todos.map((todoEment)=>{
         return <TodoItem key={todoEment.id} todo={todoEment} />
       })}
@@ -30,5 +30,11 @@ Todos.propTypes= {
   ).isRequired,
 };
 
+const style = {
+  container: {
+    width: "40%",
+    margin: "0 auto",
+  }
+}
 
 export default Todos;

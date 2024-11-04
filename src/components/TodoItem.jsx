@@ -5,7 +5,11 @@ import PropTypes from "prop-types";
 const TodoItem = (props) => {
   console.log("this is fill item", props.todo.title);
 
-  return <p>{props.todo.title}</p>;
+  return (
+    <div style={style.TodoItem}>
+      <p>{props.todo.title}</p>
+    </div>
+  );
 };
 
 // * highlight: add props validation
@@ -16,5 +20,12 @@ TodoItem.propTypes = {
     completed: PropTypes.bool.isRequired,
   }).isRequired,
 };
+
+const style = {
+  TodoItem: {
+    border: "2px solid #f4f4f4",
+  fontsize: "24px",
+  }
+}
 
 export default TodoItem;

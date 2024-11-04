@@ -29,15 +29,26 @@ function App() {
   console.log(todos);
 
   return (
+    // * highlight: add inline css
     <>
-      <div>
-        <h1>React Project</h1>
+      <div style={style.container} >
+        <h1 style={style.title}>React Project</h1>
         <Todos
           todos= {todos}
          />
       </div>
     </>
   );
+}
+
+const style = {
+  container: {
+    textAlign: "center",
+    padding: "12px",
+  },
+  title: {
+    fontSize: "36px"
+  },
 }
 
 export default App;

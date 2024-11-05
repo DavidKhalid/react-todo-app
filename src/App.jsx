@@ -17,7 +17,7 @@ function App() {
     {
       id: 2,
       title: "Have lunch with Guru Domba",
-      completed: false,
+      completed: false, 
     },
     {
       id: 3,
@@ -26,7 +26,17 @@ function App() {
     },
   ]);
 
-  console.log(todos);
+  const toggleCompleted = (todoId) => {
+    console.log(`this is todoId ${todoId}`);
+    const updatedTodos = todos.map((book)=>{
+      if(book.id === todoId){
+        book.completed = !book.completed
+      }
+      return book;
+    })
+    setTodos(updatedTodos)
+    
+  }
 
   return (
     // * highlight: add inline css
@@ -35,6 +45,7 @@ function App() {
         <h1 style={style.title}>React Project</h1>
         <Todos
           todos= {todos}
+          toggleCompleted = {toggleCompleted}
          />
       </div>
     </>

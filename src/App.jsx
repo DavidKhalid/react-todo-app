@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import { useState } from "react";
 import Todos from "./components/Todos";
 // import reactLogo from './assets/react.svg'
@@ -26,16 +25,18 @@ function App() {
     },
   ]);
 
-  const toggleCompleted = (todoId) => {
-    console.log(`this is todoId ${todoId}`);
-    const updatedTodos = todos.map((book)=>{
-      if(book.id === todoId){
-        book.completed = !book.completed
+
+  // console.log(todos);
+  const toggleCompleted = (todoId)=>{ 
+    // console.log(todoId);
+    const updated = todos.map((todo)=>{
+      if(todo.id === todoId){
+        todo.completed = !todo.completed
       }
-      return book;
-    })
-    setTodos(updatedTodos)
-    
+      return todo
+    });
+    setTodos(updated);
+    console.log(todoId);
   }
 
   return (

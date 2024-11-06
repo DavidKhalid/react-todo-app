@@ -4,23 +4,20 @@ import TodoItem from "./TodoItem";
 // import React from "react";
 
 const Todos = (props) => {
-    // if(!Array.isArray(props.todos)){
-    //     console.error("Expected 'todos' to be an array")
-    //     return null;
-    // }
-  
-  console.log("Todos props:", props.todos);
+  // console.log("Todos props:", props.todos);
+  // console.log(props.toggleCompleted);
+
   return (
-    <div style={style.container} >
-      {props.todos.map((todoEment)=>{
-        return <TodoItem key={todoEment.id} todo={todoEment} />
+    <div style={style.container}>
+      {props.todos.map((todoEment) => {
+        return <TodoItem key={todoEment.id} todo={todoEment} toggleCompleted= {props.toggleCompleted}/>;
       })}
     </div>
   );
 };
 
 // * highlight: add props validation
-Todos.propTypes= {
+Todos.propTypes = {
   todos: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -28,13 +25,14 @@ Todos.propTypes= {
       completed: PropTypes.bool.isRequired,
     })
   ).isRequired,
+  toggleCompleted: PropTypes.func.isRequired,
 };
 
 const style = {
   container: {
     width: "40%",
     margin: "0 auto",
-  }
-}
+  },
+};
 
 export default Todos;

@@ -26,7 +26,18 @@ function App() {
     },
   ]);
 
-  console.log(todos);
+  // console.log(todos);
+  const toggleCompleted = (todoId)=>{ 
+    // console.log(todoId);
+    const upddated = todos.map((todo)=>{
+      if(todo.id === todoId){
+        todo.completed = !todo.completed
+      }
+      return todo
+    })
+    setTodos(upddated);
+    console.log(todoId);
+  }
 
   return (
     // * highlight: add inline css
@@ -35,6 +46,7 @@ function App() {
         <h1 style={style.title}>React Project</h1>
         <Todos
           todos= {todos}
+          toggleCompleted = {toggleCompleted}
          />
       </div>
     </>

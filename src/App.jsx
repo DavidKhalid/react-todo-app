@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import { useState } from "react";
 import Todos from "./components/Todos";
 // import reactLogo from './assets/react.svg'
@@ -7,7 +6,6 @@ import "./App.css";
 
 function App() {
   // const [count, setCount] = useState(0)
-  // eslint-disable-next-line no-unused-vars
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -17,7 +15,7 @@ function App() {
     {
       id: 2,
       title: "Have lunch with Guru Domba",
-      completed: false, 
+      completed: false,
     },
     {
       id: 3,
@@ -26,27 +24,25 @@ function App() {
     },
   ]);
 
+  // console.log(todos);
   const toggleCompleted = (todoId) => {
-    console.log(`this is todoId ${todoId}`);
-    const updatedTodos = todos.map((book)=>{
-      if(book.id === todoId){
-        book.completed = !book.completed
+    // console.log(todoId);
+    const updated = todos.map((todo) => {
+      if (todo.id === todoId) {
+        todo.completed = !todo.completed;
       }
-      return book;
-    })
-    setTodos(updatedTodos)
-    
-  }
+      return todo;
+    });
+    setTodos(updated);
+    console.log(todoId);
+  };
 
   return (
     // * highlight: add inline css
     <>
-      <div style={style.container} >
+      <div style={style.container}>
         <h1 style={style.title}>React Project</h1>
-        <Todos
-          todos= {todos}
-          toggleCompleted = {toggleCompleted}
-         />
+        <Todos todos={todos} toggleCompleted={toggleCompleted} />
       </div>
     </>
   );
@@ -58,8 +54,8 @@ const style = {
     padding: "12px",
   },
   title: {
-    fontSize: "36px"
+    fontSize: "36px",
   },
-}
+};
 
 export default App;

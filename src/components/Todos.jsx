@@ -1,18 +1,17 @@
 import PropTypes from "prop-types";
 import TodoItem from "./TodoItem";
 
-
 const Todos = (props) => {
-  // console.log("Todos props:", props.todos);
-  // console.log("this is function toggleCompleted:", props.toggleCompleted);
   return (
     <div style={style.container}>
       {props.todos.map((todoElement) => {
-        return <TodoItem 
-        key={todoElement.id} 
-        todo={todoElement}
-        toggleCompleted= {props.toggleCompleted}
-         />;
+        return (
+          <TodoItem
+            key={todoElement.id}
+            todo={todoElement}
+            toggleCompleted={props.toggleCompleted}
+          />
+        );
       })}
     </div>
   );

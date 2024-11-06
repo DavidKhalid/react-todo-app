@@ -1,38 +1,65 @@
-// eslint-disable-next-line no-unused-vars
-import PropTypes from "prop-types";
-import TodoItem from "./TodoItem";
-// import React from "react";
+import { useState } from "react";
+import Todos from "./components/Todos";
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+import "./App.css";
 
-const Todos = (props) => {
-  // console.log("Todos props:", props.todos);
-  // console.log(props.toggleCompleted);
+function App() {
+  // const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      title: "Finis Progate React Course",
+      completed: false,
+    },
+    {
+      id: 2,
+      title: "Have lunch with Guru Domba",
+      completed: false, 
+    },
+    {
+      id: 3,
+      title: "Study React with Ninja Ken",
+      completed: false,
+    },
+  ]);
+
+
+  // console.log(todos);
+  const toggleCompleted = (todoId)=>{ 
+    // console.log(todoId);
+    const updated = todos.map((todo)=>{
+      if(todo.id === todoId){
+        todo.completed = !todo.completed
+      }
+      return todo
+    });
+    setTodos(updated);
+    console.log(todoId);
+  }
 
   return (
-    <div style={style.container}>
-      {props.todos.map((todoEment) => {
-        return <TodoItem key={todoEment.id} todo={todoEment} toggleCompleted= {props.toggleCompleted}/>;
-      })}
-    </div>
+    // * highlight: add inline css
+    <>
+      <div style={style.container} >
+        <h1 style={style.title}>React Project</h1>
+        <Todos
+          todos= {todos}
+          toggleCompleted = {toggleCompleted}
+         />
+      </div>
+    </>
   );
-};
-
-// * highlight: add props validation
-Todos.propTypes = {
-  todos: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      completed: PropTypes.bool.isRequired,
-    })
-  ).isRequired,
-  toggleCompleted: PropTypes.func.isRequired,
-};
+}
 
 const style = {
   container: {
-    width: "40%",
-    margin: "0 auto",
+    textAlign: "center",
+    padding: "12px",
   },
-};
+  title: {
+    fontSize: "36px"
+  },
+}
 
-export default Todos;
+export default App;

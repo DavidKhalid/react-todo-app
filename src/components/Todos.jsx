@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import TodoItem from "./TodoItem";
 
-const Todos = (props) => {
+const Todos = (props) => {  
+  // console.log(props.deleteTodo);
   return (
     <div style={style.container}>
       {props.todos.map((todoElement) => {
@@ -10,6 +11,8 @@ const Todos = (props) => {
             key={todoElement.id}
             todo={todoElement}
             toggleCompleted={props.toggleCompleted}
+            deleteTodo={props.deleteTodo}
+
           />
         );
       })}
@@ -27,6 +30,7 @@ Todos.propTypes = {
     })
   ).isRequired,
   toggleCompleted: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
 };
 
 const style = {

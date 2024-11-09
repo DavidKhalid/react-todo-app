@@ -37,12 +37,21 @@ function App() {
     console.log(todoId);
   };
 
+  const deleteTodo = (todoID) => {
+    console.log("function is works", todoID);
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoID));
+  };
+
   return (
     // * highlight: add inline css
     <>
       <div style={style.container}>
-        <h1 style={style.title}>React Project</h1>
-        <Todos todos={todos} toggleCompleted={toggleCompleted} />
+        <h1 style={style.title}>My Todo List</h1>
+        <Todos
+          todos={todos}
+          toggleCompleted={toggleCompleted}
+          deleteTodo={deleteTodo}
+        />
       </div>
     </>
   );
